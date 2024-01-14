@@ -37,10 +37,6 @@ class Program
                     commandLine = commandLine.Substring(2);
                 if (commandLine.StartsWith("./"))
                     commandLine = commandLine.Substring(2);
-                if (commandLine.ToLower().StartsWith("eve-master.exe"))
-                    commandLine = commandLine.Substring(14);
-                if (commandLine.ToLower().StartsWith("eve-master"))
-                    commandLine = commandLine.Substring(10);
 
                 Task.Run(() => InvokeCommand
                 (
@@ -60,8 +56,9 @@ class Program
     }
     static RootCommand BuildCommands()
     {
-        return (RootCommand)new RootCommand("Metrics Analyzer tool.")
-            .FactoryAdd(new CommandUntabifyFolder("Process local .csv files"));
+        return (RootCommand)new RootCommand("Untabify text files.")
+            .FactoryAdd(new CommandUntabifyFolder("Untabify text files in folder"))
+            .FactoryAdd(new CommandUntabifyFile("Untabify text file"));
     }
     static async Task InvokeCommand(Func<Task<int>> invoke, bool exit = true)
     {
