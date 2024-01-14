@@ -1,0 +1,8 @@
+{
+    "profiles": {
+        "EMPTY": {
+            "commandName": "Project",
+            "commandLineArgs": ""
+        }
+    }
+}
