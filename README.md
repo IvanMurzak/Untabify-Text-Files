@@ -9,6 +9,8 @@
 
 Console tool for untabifying files. Replaces tabs to spaces at entire the text line and keeps vertical alignment.
 
+### [Download](https://github.com/IvanMurzak/Untabify-Text-Files/releases)
+
 
 # Commands
 
