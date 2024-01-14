@@ -10,17 +10,17 @@ public class CommandUntabifyFolder : CommandBase
 {
     public CommandUntabifyFolder(string? description = null) : base("folder", description)
     {
-        var argumentFolder          = new Argument<string>("folder", "Folder path");
-        var optionFileSearchPattern = new Option<string>("fileSearchPattern", () => "*", "Filter files by search pattern. Example: '*.cs'.");
-        var optionRecursively       = new Option<bool>("recursively", () => true, "Process files recursively in all subfolders");
+        var argumentFolder      = new Argument<string>("folder", "Folder path");
+        var optionFileSearch    = new Option<string>("search", () => "*", "Filter files by search pattern. Example: '*.cs'.");
+        var optionRecursively   = new Option<bool>("recursively", () => true, "Process files recursively in all subfolders");
 
-        argumentFolder          .AddValidator(x => Directory.Exists(x.GetValueOrDefault<string>()));
-        optionFileSearchPattern .AddAlias("s");
-        optionRecursively       .AddAlias("r");
+        argumentFolder   .AddValidator(x => Directory.Exists(x.GetValueOrDefault<string>()));
+        optionFileSearch .AddAlias("s");
+        optionRecursively.AddAlias("r");
 
 
         this.FactoryAdd(argumentFolder)
-            .FactoryAdd(optionFileSearchPattern)
+            .FactoryAdd(optionFileSearch)
             .FactoryAdd(optionRecursively)
             .FactorySetHandler(context =>
             {
@@ -29,7 +29,7 @@ public class CommandUntabifyFolder : CommandBase
                 var tabSize = context.ParseResult.GetValueForOption(optionTabSize);
                 var folderPath = context.ParseResult.GetValueForArgument(argumentFolder);
 
-                var fileSearchPattern = context.ParseResult.GetValueForOption(optionFileSearchPattern);
+                var fileSearch = context.ParseResult.GetValueForOption(optionFileSearch);
                 var recursively = context.ParseResult.GetValueForOption(optionRecursively);
 
                 try
@@ -38,7 +38,7 @@ public class CommandUntabifyFolder : CommandBase
                             () => Untabify.Processor.Untabify.ReplaceTabsInFolder
                             (
                                 folderPath,
-                                fileSearchPattern!,
+                                fileSearch!,
                                 tabSize,
                                 recursively
                             ))
