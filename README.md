@@ -53,3 +53,7 @@ Arguments:
 Options:
   t, tab-size <tab-size>  Tab size in space characters. [default: 4]
 ```
+
+---
+
+![Art](Assets/art.png)
