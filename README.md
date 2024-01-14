@@ -29,9 +29,9 @@ Arguments:
   <folder>  Folder path
 
 Options:
-  t, tab-size <tab-size>                    Tab size in space characters. [default: 4]
-  fileSearchPattern, s <fileSearchPattern>  Filter files by search pattern. Example: '*.cs'. [default: *]
-  r, recursively                            Process files recursively in all subfolders [default: True]
+  t, tab-size <tab-size>  Tab size in space characters. [default: 4]
+  s, search <search>      Filter files by search pattern. Example: '*.cs'. [default: *]
+  r, recursively          Process files recursively in all subfolders [default: True]
 ```
 
 ## Untabify text file
@@ -51,5 +51,5 @@ Arguments:
   <file>  File path
 
 Options:
-  t, tab-size <tab-size>                    Tab size in space characters. [default: 4]
+  t, tab-size <tab-size>  Tab size in space characters. [default: 4]
 ```
